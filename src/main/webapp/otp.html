@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter OTP</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #e8f0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .otp-container {
+            background: white;
+            width: 350px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .otp-container h2 {
+            margin-bottom: 10px;
+            color: #0b63ce;
+        }
+
+        .otp-container p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .otp-boxes input {
+            width: 40px;
+            height: 45px;
+            margin: 5px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #0b63ce;
+            border-radius: 6px;
+        }
+
+        .otp-boxes input:focus {
+            outline: none;
+            border-color: #084da2;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+        }
+
+        button {
+            width: 120px;
+            padding: 10px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .verify-btn {
+            background: #0b63ce;
+            color: white;
+        }
+
+        .resend-btn {
+            background: white;
+            color: #0b63ce;
+            border: 2px solid #0b63ce;
+        }
+
+        .resend-btn:hover {
+            background: #e8f0ff;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="otp-container">
+        <h2>Enter OTP</h2>
+        <p>Please enter the 6-digit code sent to your number.</p>
+
+      <form action="verify" method="post">
+    <div class="otp-boxes">
+        <input type="text" name="d1" maxlength="1" pattern="[0-9]" required>
+        <input type="text" name="d2" maxlength="1" pattern="[0-9]" required>
+        <input type="text" name="d3" maxlength="1" pattern="[0-9]" required>
+        <input type="text" name="d4" maxlength="1" pattern="[0-9]" required>
+        <input type="text" name="d5" maxlength="1" pattern="[0-9]" required>
+        <input type="text" name="d6" maxlength="1" pattern="[0-9]" required>
+    </div>
+
+    <button type="submit" class="verify-btn">Verify</button>
+</form>
+
+<form action="gen" method="post">
+    <button type="submit" class="resend-btn">Resend OTP</button>
+</form>
+      
+    </div>
+
+</body>
+</html>
