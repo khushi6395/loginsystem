@@ -27,15 +27,11 @@ public class NewPassword extends HttpServlet {
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","khushi123");
-	
-
-            
-            PreparedStatement ps = con.prepareStatement("SELECT username FROM users WHERE email = ?");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
+        PreparedStatement ps = con.prepareStatement("SELECT username FROM users WHERE email = ?");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
+             if (rs.next()) {
                 
                 if (npass == null || cpass == null) {
                     subj="Error!";
@@ -50,9 +46,8 @@ public class NewPassword extends HttpServlet {
                         ps1.setString(1, npass);
                         ps1.setString(2, email);
                         int updated = ps1.executeUpdate();
-
-                        if (updated > 0) {
-                           subj="update succesfully";
+                            if (updated > 0) {
+                       subj="update succesfully";
                            messag="Changed password successfully";
                             out.println("<div style='text-align:center;'><a href='index.html'>Go to Login</a></div>");
                         } else {
@@ -63,8 +58,7 @@ public class NewPassword extends HttpServlet {
                 }
             }
             Mail.sendEmail(messag,subj,email,from);
-
-            con.close();
+             con.close();
         } catch (Exception e) {
           e.printStackTrace();
         }

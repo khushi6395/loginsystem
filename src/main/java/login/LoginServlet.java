@@ -5,7 +5,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.sql.*;
-
  @WebServlet("/log")
 public class  LoginServlet extends HttpServlet  {  
 	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException{
@@ -13,14 +12,12 @@ public class  LoginServlet extends HttpServlet  {
 		PrintWriter out=res.getWriter();
 		String eid=req.getParameter("email");
 		String pas=req.getParameter("password");
-		  
-	        String from = "devworkspace803@gmail.com";
+		   String from = "devworkspace803@gmail.com";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","khushi123");
-		
-			PreparedStatement ps=con.prepareStatement("Select username from users where email=? AND password=?");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
+		    PreparedStatement ps=con.prepareStatement("Select username from users where email=? AND password=?");
 			ps.setString(1,eid);
 			ps.setString(2, pas);
 			ResultSet rs=ps.executeQuery();
@@ -31,11 +28,7 @@ public class  LoginServlet extends HttpServlet  {
 		        Mail.sendEmail(messag,"Welcome note",eid,from);
 		        
 		    } else {
-		        out.println("<h3>Invalid Email ID or Password.</h3>");
-
-
-			
-		}
+		        out.println("<h3>Invalid Email ID or Password.</h3>");}
 		}
 		catch(Exception e)
 		{

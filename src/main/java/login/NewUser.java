@@ -20,25 +20,19 @@ public class  NewUser extends HttpServlet  {
 	        String from = "devworkspace803@gmail.com";
 	        String messag=" ";
 	        String subj=" ";
-	        
-		try {
+	        try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","khushi123");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
 			PreparedStatement ps=con.prepareStatement("SELECT email FROM users WHERE email = ?");
 			ps.setString(1,eid);
 			ResultSet rs=ps.executeQuery();
-			
-		if(rs.next()) {
+			if(rs.next()) {
 		
 				subj="Error!";
 			    messag="You are already have an account";
 			}
-
-		       
-		   
-		        
-		   else { 
+          else { 
 			   if(pas==cpas)
 			   {
 				   subj="Error";
@@ -57,8 +51,7 @@ public class  NewUser extends HttpServlet  {
 			           {
 			        	  subj="Succesfully Registered";
 			        	  messag=" Congratulations "+" " +uname +" Welcome in Intellihire!";
-			           	
-		}
+			        }
 		   }
 		}
 		  Mail.sendEmail(messag,subj,eid,from);

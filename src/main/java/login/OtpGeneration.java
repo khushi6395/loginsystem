@@ -29,10 +29,9 @@ public class OtpGeneration extends HttpServlet {
 
         return otp.toString();
     }
-
     
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
    res.setContentType("text/plain");
         PrintWriter out = res.getWriter();
         String from="devworkspace803";
@@ -42,7 +41,7 @@ public class OtpGeneration extends HttpServlet {
     	try {
     		Class.forName("com.mysql.cj.jdbc.Driver");
     		
-    		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","root","khushi123");
+    		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/User","****","*****");
                 PreparedStatement ps = con.prepareStatement("SELECT username FROM users WHERE email = ?");
                 ps.setString(1, to);
                 ResultSet rs = ps.executeQuery();
